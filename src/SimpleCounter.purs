@@ -36,4 +36,4 @@ eval = case _ of
   Increment next -> 
     H.modify ((+) 1) $> next
   Decrement next -> 
-    H.modify (flip (-) $ 1) $> next
+    H.modify (flip (-) 1) $> next
