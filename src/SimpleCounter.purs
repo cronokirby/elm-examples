@@ -12,9 +12,7 @@ data Query a
    = Increment a
    | Decrement a
 
-type Input = Unit
-
-button :: forall m. H.Component HH.HTML Query Input Void m
+button :: forall m. H.Component HH.HTML Query Unit Void m
 button =
   H.component
     { initialState: const 0
@@ -26,9 +24,9 @@ button =
 render :: State -> H.ComponentHTML Query
 render state =
   HH.div []
-    [ HH.button [ HE.onClick (HE.input_ Increment)] [ HH.text "+"]
+    [ HH.button [ HE.onClick (HE.input_ Increment) ] [ HH.text "+" ]
     , HH.div [] [ HH.text (show state) ] 
-    , HH.button [HE.onClick (HE.input_ Decrement)] [ HH.text "-" ]
+    , HH.button [ HE.onClick (HE.input_ Decrement) ] [ HH.text "-" ]
     ]
 
 eval :: forall m. Query ~> H.ComponentDSL State Query Void m
